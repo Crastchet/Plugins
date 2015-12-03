@@ -7,14 +7,9 @@ import java.util.Observer;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
-import com.sun.media.jfxmedia.events.NewFrameEvent;
-
 public class PluginFrame extends JFrame implements Observer {
-
-	
 	/**
 	 * This class is the basic frame of a plugin finder
 	 * 
