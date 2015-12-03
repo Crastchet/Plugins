@@ -35,10 +35,26 @@ public class PluginFinder extends Observable {
 	
 	ActionListener checkDirectoryPlugin = new ActionListener() {
 		public void actionPerformed(ActionEvent evt) {
-			files=directory.listFiles();
-			
+			File[] tmp=directory.listFiles();
+			for(int i=0; i<tmp.length; i++){
+				if(!filesContainsFile(tmp[i].getName())){
+					if(!filter.accept(directory, tmp[i].getName())){
+						System.out.println("The file "+tmp[i].getName()+" is not a plugin. \n Delete a file "+tmp[i].getName());
+						tmp[i].delete();
+					}
+					
+				}
+			}
 		}
 	};
+	
+	public boolean filesContainsFile(String name){
+		for(int i=0; i<files.length; i++){
+			if(files[i].getName()==name)
+				return true;
+		}
+		return false;
+	}
 	
 	public File[] getClassFiles() {
 		return directory.listFiles(filter);

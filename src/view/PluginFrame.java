@@ -13,16 +13,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
-
 import plugins.ToUpperCase;
 
 import com.sun.media.jfxmedia.events.NewFrameEvent;
 
 import finder.PluginFinder;
-
 public class PluginFrame extends JFrame implements Observer {
-
-	
 	/**
 	 * This class is the basic frame of a plugin finder
 	 * 
