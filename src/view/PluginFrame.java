@@ -1,16 +1,24 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Observable;
 import java.util.Observer;
 
+import javax.swing.AbstractAction;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
+import plugins.ToUpperCase;
+
 import com.sun.media.jfxmedia.events.NewFrameEvent;
+
+import finder.PluginFinder;
 
 public class PluginFrame extends JFrame implements Observer {
 
@@ -73,7 +81,23 @@ public class PluginFrame extends JFrame implements Observer {
 		menuBar.add(menu_file);
 		menuBar.add(menu_tools);
 		menuBar.add(menu_help);
+		try {
+			initToolsMenu();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.add(menuBar, BorderLayout.PAGE_START);
+	}
+	
+	public void initToolsMenu() throws Exception {
+		JMenuItem item = new JMenuItem(new AbstractAction(ToUpperCase.getName()) {
+
+			public void actionPerformed(ActionEvent e) {
+				textEditor.setText(ToUpperCase.action(textEditor.getText()));
+			}
+		});
+		menu_tools.add(item);
 	}
 	
 	public void initTextEditor() {
@@ -87,9 +111,18 @@ public class PluginFrame extends JFrame implements Observer {
 		
 	}
 	
-//	public void newClassAppeared(File classFile) {
+	//private static Class getClassFromFile(String fullClassName) throws Exception {
+//	    URLClassLoader loader = new URLClassLoader(new URL[] {
+//	            new URL("file:///home/l3miage/saab/COO/plugins/Plugins/droppins")
+//	    });
+	    
+	    //ClassLoader loader = new Class
+	    //return loader.loadClass(fullClassName);
+	//}
+	
+//	public void newClassAppeared(Class class) {
 //	}
 //
-//	public void classHasDisappeared(File classFile) {
+//	public void classHasDisappeared(Class class) {
 //	}
 }

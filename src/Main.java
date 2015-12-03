@@ -1,3 +1,4 @@
+import plugins.ToUpperCase;
 import view.PluginFrame;
 
 
