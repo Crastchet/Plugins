@@ -47,7 +47,12 @@ public class ToolsMenu extends JMenu implements Observer {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					pluginFrame.setTextArea(p.transform(pluginFrame.getTextArea().getSelectedText()));
+					String str;
+					if(pluginFrame.getTextArea().getSelectedText() == null)
+						str = pluginFrame.getTextArea().getText();
+					else
+						str = pluginFrame.getTextArea().getSelectedText();
+					pluginFrame.setTextArea(p.transform(str));
 				}
 			}));
 		}

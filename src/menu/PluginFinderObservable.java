@@ -56,11 +56,8 @@ public class PluginFinderObservable extends Observable {
 	}
 	
 	public void init() {
-		System.out.println("Un : "+filesPlugins.size());
 		this.timer.start();
-		System.out.println("Deux : "+filesPlugins.size());
 		this.updateObservers();
-		System.out.println("Trois : "+filesPlugins.size());
 	}
 
 	public void update() {

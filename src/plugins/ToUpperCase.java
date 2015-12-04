@@ -4,7 +4,9 @@ public class ToUpperCase implements Plugin {
 
 	@Override
 	public String transform(String str) {
-		return str.toUpperCase();
+		if(str != null)
+			return str.toUpperCase();
+		return null;
 	}
 
 	@Override
