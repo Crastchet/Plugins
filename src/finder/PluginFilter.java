@@ -19,6 +19,20 @@ public class PluginFilter implements FilenameFilter {
 	 * A method which filter plugin files
 	 */
 	public boolean accept(File f, String name) {
+		if(!isClassExtension(name))
+			return false;
+		Class<?> myClass = null;
+		try {
+			myClass = Class.forName("plugins." + name.replaceFirst("\\.class$", ""));
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(myClass == null)
+			return false;
+	    return true;
+	}
+	
+	public boolean isClassExtension(String name) {
 		return name.endsWith(".class");
 	}
 

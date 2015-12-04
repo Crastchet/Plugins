@@ -1,19 +1,16 @@
 package plugins;
 
-public class ToUpperCase extends Plugin {
+public class ToUpperCase implements Plugin {
 
-	
-	
-	public ToUpperCase(String name) {
-		super("To Upper Case");
+	@Override
+	public String transform(String str) {
+		return str.toUpperCase();
 	}
 
-	public static String action(String theString) {
-		return theString.toUpperCase();
-	}
-
-	public static String getName() {
+	@Override
+	public String getLabel() {
 		return "To Upper Case";
 	}
+
 	
 }

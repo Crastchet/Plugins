@@ -1,7 +1,10 @@
-/classes/
-/dropins/
-/finder/
-/view/
 /Main.class
-/Observer.class
 /PluginObserver.class
+/finder/
+/plugins/
+/view/
+/ToolsMenu.class
+/Observer.class
+/PluginObservable.class
+/Observable.class
+/menu/

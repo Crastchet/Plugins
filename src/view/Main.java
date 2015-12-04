@@ -1,5 +1,5 @@
+package view;
 import plugins.ToUpperCase;
-import view.PluginFrame;
 
 
 public class Main {
