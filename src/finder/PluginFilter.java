@@ -1,6 +1,9 @@
 package finder;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.lang.reflect.Constructor;
+
+import plugins.Plugin;
 
 
 /**
@@ -21,19 +24,35 @@ public class PluginFilter implements FilenameFilter {
 	public boolean accept(File f, String name) {
 		if(!isClassExtension(name))
 			return false;
-		Class<?> myClass = null;
+		Class<?> cls = null;
 		try {
-			myClass = Class.forName("plugins." + name.replaceFirst("\\.class$", ""));
+			cls = Class.forName("plugins." + name.replaceFirst("\\.class$", ""));
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		if(myClass == null)
+		if(cls == null)
 			return false;
-	    return true;
+		
+	    return (this.implementsPlugin(cls) && this.isFromPackagePlugins(cls) && this.hasConstructorNoParam(cls));
 	}
 	
 	public boolean isClassExtension(String name) {
 		return name.endsWith(".class");
+	}
+	
+	public boolean implementsPlugin(Class<?> cls) {
+		return Plugin.class.isAssignableFrom(cls);
+	}
+	
+	public boolean isFromPackagePlugins(Class<?> cls) {
+		return cls.getPackage().getName().equals("plugins");
+	}
+	
+	public boolean hasConstructorNoParam(Class<?> cls) {
+		for(Constructor<?> c : cls.getConstructors())
+			if(c.getParameters().length == 0)
+				return true;
+		return false;
 	}
 
 }

@@ -5,6 +5,9 @@ import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.Timer;
 
@@ -24,7 +27,7 @@ import finder.PluginFilter;
 public class PluginFinderObservable extends Observable {
 	
 	private File directory;
-	private ArrayList<File> filesPlugins;
+	private ArrayList<File> filesPlugins, newFilesPlugins;
 	private ArrayList<Plugin> plugins;
 	private PluginFilter filter;
 	private Timer timer;
@@ -43,12 +46,12 @@ public class PluginFinderObservable extends Observable {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boolean modif = false;
+				ArrayList<File> files = new ArrayList<File>();
+				boolean modif;
 				for(File tmp : directory.listFiles(filter))
-					if(!(filesPlugins.contains(tmp))) {
-						filesPlugins.add(tmp);
-						modif = true;
-					}
+					files.add(tmp);
+				if(modif = !files.equals(filesPlugins))
+					filesPlugins = files;
 				if(modif)
 					update();
 			}
@@ -72,6 +75,13 @@ public class PluginFinderObservable extends Observable {
 		}
 	}
 	
+	public HashSet<File> getFilesFromDirectory() {
+		File[] files = this.directory.listFiles(this.filter);
+	    if ((files == null) || (files.length == 0)) {
+	      return new HashSet();
+	    }
+	    return new HashSet(Arrays.asList(files));
+	}
 	
 	public void generatePlugins() {
 		plugins.clear();
