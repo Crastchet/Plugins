@@ -94,7 +94,7 @@ public class PluginFrame extends JFrame {
 	public void setTextArea(String txt) {
 		if(this.textArea.getSelectedText() != null)
 			this.textArea.replaceSelection(txt);
-		else
+		else if(this.textArea.getText() != null)
 			this.textArea.setText(txt);
 	}
 }
