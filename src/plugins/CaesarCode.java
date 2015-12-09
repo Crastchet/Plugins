@@ -15,7 +15,7 @@ public abstract class CaesarCode implements Plugin {
 		for(int i=0; i<str.length(); i++)
 			for(int j=0; j<alphabet.length; j++)
 				if(strLow.charAt(i) == alphabet[j]) {
-					tmp += alphabet[(j+1)%26];
+					tmp += alphabet[(j+shift)%26];
 					break;
 				}
 		return tmp;
