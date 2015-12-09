@@ -2,7 +2,7 @@ package plugins;
 
 /**
  * A plugin class.
- * This one will reverse the text we give it
+ * This one will transform the text to upper case
  * @author Coilliaux Thibault
  * @author Deleplanque Dylan
  * @author Lanschoot Ludovic
@@ -28,7 +28,7 @@ public class ToUpperCase implements Plugin {
 	 */
 	@Override
 	public String getLabel() {
-		return "To Upper Case";
+		return "En majuscules";
 	}
 
 	
