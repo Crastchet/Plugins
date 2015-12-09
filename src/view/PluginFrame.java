@@ -29,7 +29,7 @@ public class PluginFrame extends JFrame {
 	JMenu menu_file, menu_help;
 	JTextArea textArea;
 	
-	private PluginFinderObservable pluginFinder = new PluginFinderObservable("droppins");
+	private PluginFinderObservable pluginFinder = new PluginFinderObservable("dropins/plugins");
 	
 	/**
 	 * Constructor for the frame
