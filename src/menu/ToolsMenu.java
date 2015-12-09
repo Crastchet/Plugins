@@ -18,23 +18,35 @@ import plugins.Plugin;
 import plugins.ToUpperCase;
 import view.PluginFrame;
 
+/**
+ * ToolsMenu is a class which represents the menu of our main frame. It implements Observer because or each file we are goind to add or remove into the dropins directory, it will be updater
+ * @author Coilliaux Thibault
+ * @author Deleplanque Dylan
+ * @author Landschoot Ludovic
+ * @author Saab Mathieu
+ */
 
 public class ToolsMenu extends JMenu implements Observer {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Plugin> plugins;
 
 	private PluginFrame pluginFrame;
 	
+	/**
+	 * Constructor for the class
+	 * @param pf The frame in which the menu will be added
+	 */
 	public ToolsMenu(PluginFrame pf) {
 		super("t_Tools");
 		plugins = new ArrayList<Plugin>();
 		pluginFrame = pf;
 	}
 
+	/**
+	 * A method which will update the Tools list which each file we are going to find in the dropins directory
+	 * @param plugs the list of plugins we want to add
+	 */
 	@Override
 	public void updatePluginList(ArrayList<Plugin> plugs) { // Bon là on recharge toute la liste, on leur remet une AbstractAction, c'est lourd.. Voir si on peut éviter en chargent tout ça plus tôt dans pluginfinder
 		plugins = plugs;

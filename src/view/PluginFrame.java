@@ -12,16 +12,15 @@ import javax.swing.JTextArea;
 import menu.Observer;
 import menu.PluginFinderObservable;
 import menu.ToolsMenu;
-
+/**
+ * This class is the basic frame of a plugin finder
+ * 
+ * @author Coilliaux Thibault
+ * @author Deleplanque Dylan
+ * @author Lanschoot Ludovic
+ * @author Saab Mathieu
+ */
 public class PluginFrame extends JFrame {
-	/**
-	 * This class is the basic frame of a plugin finder
-	 * 
-	 * @author Coilliaux Thibault
-	 * @author Deleplanque Dylan
-	 * @author Lanschoot Ludovic
-	 * @author Saab Mathieu
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	JMenuBar menuBar;
@@ -65,8 +64,7 @@ public class PluginFrame extends JFrame {
 	}
 	
 	/**
-	 * A method which will create the menu and send it so it can be added to the main frame
-	 * @return the menu of the frame
+	 * A method which will create the menu and add it to the main frame
 	 */
 	public void  initMenu() {		
 		menu_file = new JMenu("File");
@@ -80,17 +78,27 @@ public class PluginFrame extends JFrame {
 		this.add(menuBar, BorderLayout.PAGE_START);
 	}
 	
+	/**
+	 * A method which initialize the text editor
+	 */
 	public void initTextEditor() {
 		
 		textArea = new JTextArea("A text we want to modify");
 		this.add(textArea, BorderLayout.CENTER);
 	}
 	
-	
-	
+	/**
+	 * A method used to get thr text area
+	 * @return the text area of the frame
+	 */
 	public JTextArea getTextArea() {
 		return this.textArea;
 	}
+	
+	/**
+	 * A method which set the text area and will choose : if we select a part of the text, only this part will be modified
+	 * @param txt the text we want to write in the text area
+	 */
 	public void setTextArea(String txt) {
 		if(this.textArea.getSelectedText() != null)
 			this.textArea.replaceSelection(txt);

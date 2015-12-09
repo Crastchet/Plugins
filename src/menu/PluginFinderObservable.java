@@ -11,13 +11,13 @@ import finder.PluginFilter;
 
 
 /**
- * PluginFinder is a class which finds all plugins in a directory and add it to 
+ * PluginFinderObservable is a class which finds all plugins in a directory and add it to 
  * the droppins directory
- * It will be used by an extendable editor, given by our teachers.
+ * It will be used by an extendable editor.
  * @author Coilliaux Thibault
+ * @author Deleplanque Dylan
  * @author Landschoot Ludovic
  * @author Saab Mathieu
- * @implements FilenameFilter
  */
 public class PluginFinderObservable extends Observable {
 	
@@ -29,7 +29,8 @@ public class PluginFinderObservable extends Observable {
 	
 	/**
 	 * Constructor for a plugin finder
-	 * @param directory the directory where the plugin are
+	 * We create a timer which will, each seconds, check if there were any changes in the plugin directory
+	 * @param path the path to the directory where the plugins are
 	 */
 	public PluginFinderObservable(String path) {
 		super();
@@ -53,28 +54,46 @@ public class PluginFinderObservable extends Observable {
 		});
 	}
 	
+	/**
+	 * A method which will initialize the timer and the observers
+	 */
 	public void init() {
 		this.timer.start();
 		this.updateObservers();
 	}
 
+	/**
+	 * A method which will regenerate the plugins list and call the update of the observers. 
+	 */
 	public void update() {
 		this.generatePlugins();
 		this.updateObservers();
 	}
 	
+	/**
+	 * A method which will update the observers
+	 * Here, it will update the plugins list of the frame
+	 */
 	@Override
 	public void updateObservers() {
 		for(Observer o : this.observers)
 			o.updatePluginList(plugins);
 	}
 	
+	/**
+	 * A method which will generate plugins from the list of files we have intanciated sooner
+	 */
 	public void generatePlugins() {
 		plugins.clear();
 		for(File f : filesPlugins)
 			plugins.add(this.generatePluginFromFile(f));		
 	}
 	
+	/**
+	 * A method which creates a plugin from a given file
+	 * @param f the file which contains a class file which extends plugins
+	 * @return the plugin contained in the class file
+	 */
 	public Plugin generatePluginFromFile(File f) {
 		Class<? extends Plugin> pluginClass = null;
 		try {
