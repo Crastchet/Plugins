@@ -1,13 +1,6 @@
 package menu;
 
 import java.awt.event.ActionEvent;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.io.File;
-import java.io.FilenameFilter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
@@ -15,7 +8,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import plugins.Plugin;
-import plugins.ToUpperCase;
 import view.PluginFrame;
 
 /**
@@ -56,6 +48,11 @@ public class ToolsMenu extends JMenu implements Observer {
 		
 		for(Plugin p : plugins) {
 			this.add(new JMenuItem(new AbstractAction(p.getLabel()) {
+
+				/**
+				 * 
+				 */
+				private static final long serialVersionUID = 1L;
 
 				@Override
 				public void actionPerformed(ActionEvent e) {

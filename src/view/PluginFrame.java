@@ -1,15 +1,12 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.io.File;
-import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JTextArea;
 
-import menu.Observer;
 import menu.PluginFinderObservable;
 import menu.ToolsMenu;
 /**
