@@ -111,6 +111,8 @@ public class PluginFinderObservable extends Observable {
 		return null;
 	}
 	
-	
+	public ArrayList<Plugin> getPlugins() {
+		return this.plugins;
+	}
 
 }

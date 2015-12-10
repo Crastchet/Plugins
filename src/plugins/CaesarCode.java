@@ -12,12 +12,15 @@ public abstract class CaesarCode implements Plugin {
 
 	public String rollLetters(String str, int shift) {
 		String tmp = "", strLow = str.toLowerCase();
-		for(int i=0; i<str.length(); i++)
+		for(int i=0; i<str.length(); i++) {
+			if(str.charAt(i) == ' ')
+				tmp += ' ';
 			for(int j=0; j<alphabet.length; j++)
 				if(strLow.charAt(i) == alphabet[j]) {
 					tmp += alphabet[(j+shift)%26];
 					break;
 				}
+		}
 		return tmp;
 	}
 }

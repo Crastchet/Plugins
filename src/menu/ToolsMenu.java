@@ -40,7 +40,7 @@ public class ToolsMenu extends JMenu implements Observer {
 	 * @param plugs the list of plugins we want to add
 	 */
 	@Override
-	public void updatePluginList(ArrayList<Plugin> plugs) { // Bon là on recharge toute la liste, on leur remet une AbstractAction, c'est lourd.. Voir si on peut éviter en chargent tout ça plus tôt dans pluginfinder
+	public void updatePluginList(ArrayList<Plugin> plugs) {
 		plugins = plugs;
 		if(plugins == null || plugins.size() == 0)
 			return;
