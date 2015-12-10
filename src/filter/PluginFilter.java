@@ -1,4 +1,4 @@
-package finder;
+package filter;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.lang.reflect.Constructor;

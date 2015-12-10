@@ -16,6 +16,7 @@ public class PluginFrameTest {
 
 	@After
 	public void tearDown() throws Exception {
+		pluginFrame.
 	}
 
 	@Test

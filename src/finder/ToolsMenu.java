@@ -1,4 +1,4 @@
-package menu;
+package finder;
 
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import plugins.Plugin;
 import view.PluginFrame;
 
 /**
- * ToolsMenu is a class which represents the menu of our main frame. It implements Observer because or each file we are goind to add or remove into the dropins directory, it will be updater
+ * ToolsMenu is a class which represents the filter of our main frame. It implements Observer because or each file we are goind to add or remove into the dropins directory, it will be updater
  * @author Coilliaux Thibault
  * @author Deleplanque Dylan
  * @author Landschoot Ludovic
@@ -27,10 +27,10 @@ public class ToolsMenu extends JMenu implements Observer {
 	
 	/**
 	 * Constructor for the class
-	 * @param pf The frame in which the menu will be added
+	 * @param pf The frame in which the filter will be added
 	 */
 	public ToolsMenu(PluginFrame pf) {
-		super("t_Tools");
+		super("Tools");
 		plugins = new ArrayList<Plugin>();
 		pluginFrame = pf;
 	}

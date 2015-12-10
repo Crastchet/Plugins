@@ -1,4 +1,4 @@
-package menu;
+package finder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.swing.Timer;
 
 import plugins.Plugin;
-import finder.PluginFilter;
+import filter.PluginFilter;
 
 
 /**
@@ -28,7 +28,7 @@ public class PluginFinderObservable extends Observable {
 	private Timer timer;
 	
 	/**
-	 * Constructor for a plugin finder
+	 * Constructor for a plugin filter
 	 * We create a timer which will, each seconds, check if there were any changes in the plugin directory
 	 * @param path the path to the directory where the plugins are
 	 */

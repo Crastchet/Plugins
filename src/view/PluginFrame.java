@@ -7,10 +7,10 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JTextArea;
 
-import menu.PluginFinderObservable;
-import menu.ToolsMenu;
+import finder.PluginFinderObservable;
+import finder.ToolsMenu;
 /**
- * This class is the basic frame of a plugin finder
+ * This class is the basic frame of a plugin filter
  * 
  * @author Coilliaux Thibault
  * @author Deleplanque Dylan
@@ -39,7 +39,7 @@ public class PluginFrame extends JFrame {
 	}
 	
 	/**
-	 * A method which initialize the frame, it will add a menu and a text editor
+	 * A method which initialize the frame, it will add a filter and a text editor
 	 */
 	public void initFrame() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,17 +51,17 @@ public class PluginFrame extends JFrame {
 	}
 	
 	/**
-	 * A method which add components like the menu to the frame
+	 * A method which add components like the filter to the frame
 	 */
 	public void addComponents() {
-		//Add the menu
+		//Add the filter
 		initMenu();
 		//Add the text editor
 		initTextEditor();
 	}
 	
 	/**
-	 * A method which will create the menu and add it to the main frame
+	 * A method which will create the filter and add it to the main frame
 	 */
 	public void  initMenu() {		
 		menu_file = new JMenu("File");

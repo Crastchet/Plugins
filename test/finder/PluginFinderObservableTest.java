@@ -1,4 +1,4 @@
-package menu;
+package finder;
 
 
 import static org.junit.Assert.assertEquals;
@@ -12,6 +12,8 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import finder.PluginFinderObservable;
 
 public class PluginFinderObservableTest {
 	File source, dest;
@@ -34,47 +36,56 @@ public class PluginFinderObservableTest {
 	@Test
 	public void testAddPlugin() {
 		assertEquals(0,pluginFinder.getPlugins().size());
-		
-	// We add a plugin in the folder
-		FileOutputStream fos = null;
-		FileInputStream fis = null;
-		try {
-			fos = new FileOutputStream(dest);
-			fis = new FileInputStream(source);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		byte buffer[] = new byte[512 * 1024];
-		int nbLecture;
-		
-		try {
-			while((nbLecture = fis.read(buffer)) != -1)
-				fos.write(buffer,0,nbLecture);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			fis.close();
-			fos.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		this.putToUpperCaseInFolder();
 	// We test if PluginFinderObservable added the plugin to the application
-		assertEquals(1,pluginFinder.getPlugins().size());			
+		assertEquals(1,pluginFinder.getPlugins().size());
+		this.removeToUpperCaseFromFolder();
 	}
 	
 	@Test
 	public void removePlugin() {
+		this.putToUpperCaseInFolder();
 		assertEquals(1,pluginFinder.getPlugins().size());
+		this.removeToUpperCaseFromFolder();
+		assertEquals(0,pluginFinder.getPlugins().size());
+	}
+	
+	public void putToUpperCaseInFolder() {
+		// We add a plugin in the folder
+				FileOutputStream fos = null;
+				FileInputStream fis = null;
+				try {
+					fos = new FileOutputStream(dest);
+					fis = new FileInputStream(source);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+				byte buffer[] = new byte[512 * 1024];
+				int nbLecture;
+				
+				try {
+					while((nbLecture = fis.read(buffer)) != -1)
+						fos.write(buffer,0,nbLecture);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				try {
+					fis.close();
+					fos.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
+				try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	}
+
+	public void removeToUpperCaseFromFolder() {
 		File tmp = new File("dropins/plugins/ToUpperCase.class");
 		tmp.delete();
 		try {
@@ -83,7 +94,5 @@ public class PluginFinderObservableTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		assertEquals(0,pluginFinder.getPlugins().size());
 	}
-
 }

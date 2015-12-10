@@ -1,4 +1,4 @@
-package menu;
+package finder;
 
 import java.util.ArrayList;
 
