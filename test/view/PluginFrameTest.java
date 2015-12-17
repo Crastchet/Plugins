@@ -2,6 +2,8 @@ package view;
 
 import static org.junit.Assert.*;
 
+import javax.swing.JFrame;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +18,6 @@ public class PluginFrameTest {
 
 	@After
 	public void tearDown() throws Exception {
-		pluginFrame.
 	}
 
 	@Test
